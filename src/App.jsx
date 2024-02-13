@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "./Carousel";
+import SimpleCarousel from "./SimpleCarousel";
 
 const images = [
   {
@@ -59,6 +60,19 @@ const App = () => {
           </div>
         ))}
       />
+      <SimpleCarousel>
+        {images.map((item, index) => (
+          <img
+            key={index}
+            src={item.src}
+            alt={item.alt}
+            loading="lazy"
+            onError={(e) => {
+              e.target.src = "fallback-image.jpg";
+            }}
+          />
+        ))}
+      </SimpleCarousel>
     </div>
   );
 };
