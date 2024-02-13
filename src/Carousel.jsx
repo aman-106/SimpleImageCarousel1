@@ -66,7 +66,6 @@ const Carousel = ({
           ? itemsRef.current.length - 1
           : nextIndex
         : Math.max(nextIndex, 0);
-      // scrollToItem(newIndex);
       return newIndex;
     });
   };
@@ -79,7 +78,6 @@ const Carousel = ({
           ? 0
           : nextIndex
         : Math.min(nextIndex, itemsRef.current.length - 1);
-      // scrollToItem(newIndex);
       return newIndex;
     });
   };
@@ -90,19 +88,14 @@ const Carousel = ({
 
   const scrollToItem = (index) => {
     const selectedItem = itemsRef.current[index];
-    console.debug("selectedItem", selectedItem);
-
     if (selectedItem) {
       const containerWidth = carouselRef.current.offsetWidth;
       const itemWidth = selectedItem.offsetWidth;
       const scrollOffset = rtl ? containerWidth - itemWidth : 0;
       const scrollPosition = selectedItem.offsetLeft - scrollOffset;
-      console.log("scrollPosition", scrollPosition);
       carouselRef.current.scrollLeft = scrollPosition;
     }
   };
-
-  console.log("currentIndex", currentIndex);
 
   return (
     <div className="carousel-container">
