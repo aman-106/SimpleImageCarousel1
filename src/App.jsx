@@ -41,17 +41,21 @@ const App = () => {
       <h1>Seamless Infinite Wrap-Around Carousel</h1>
       <Carousel
         duration={200}
-        easing="ease-out"
-        perPage={1}
         startIndex={0}
-        threshold={20}
         loop={true}
         rtl={false}
         onInit={() => {}}
         onChange={() => {}}
         selector={images.map((item, index) => (
           <div key={index}>
-            <img src={item.src} alt={item.alt} />
+            <img
+              src={item.src}
+              alt={item.alt}
+              loading="lazy"
+              onError={(e) => {
+                e.target.src = "fallback-image.jpg";
+              }}
+            />
           </div>
         ))}
       />
